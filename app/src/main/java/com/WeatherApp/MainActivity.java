@@ -98,13 +98,23 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint("SetTextI18n")
         @Override
         protected void onPostExecute(String result){
-            super.onPostExecute(result);
-
+            if(result!=null)
+                super.onPostExecute(result);
             try {
+                if(result==null){
+                    result_info.setText("Город не найден.");
+                    return;
+                }
                 JSONObject jsonObject=new JSONObject(result);
-                result_info.setText("Температура воздуха: "+jsonObject.getJSONObject("main").getDouble("temp")+"°C"+"\n"+
-                        "Ощущается как "+jsonObject.getJSONObject("main").getDouble("feels_like")+"°C"+"\n"+
-                        "Ветер: "+jsonObject.getJSONObject("wind").getDouble("speed")+" м/с"+"\n");
+                if(jsonObject.getString("cod").equals("404")){
+                    Toast.makeText(MainActivity.this, R.string.wrong_sity, Toast.LENGTH_LONG).show();
+                }
+                else {
+                    result_info.setText(jsonObject.getJSONArray("weather").getJSONObject(0).getString("description")+"\n"+
+                            "Температура воздуха: " + jsonObject.getJSONObject("main").getDouble("temp") + "°C" + "\n" +
+                            "Ощущается как " + jsonObject.getJSONObject("main").getDouble("feels_like") + "°C" + "\n" +
+                            "Ветер: " + jsonObject.getJSONObject("wind").getDouble("speed") + " м/с" + "\n");
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();

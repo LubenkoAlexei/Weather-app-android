@@ -4,4 +4,5 @@
     <string name="hint_user_field">Введите город</string>
     <string name="main_btn_text">Узнать погоду</string>
     <string name="no_user_input">Введите город</string>
+    <string name="wrong_sity">Город не найден</string>
 </resources>
