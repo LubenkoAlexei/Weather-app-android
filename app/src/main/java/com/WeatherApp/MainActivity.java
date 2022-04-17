@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         user_field = findViewById(R.id.user_field);
         main_btn = findViewById(R.id.main_btn);
         result_info = findViewById(R.id.result_info);
-
         main_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
