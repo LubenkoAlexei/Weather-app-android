@@ -3,6 +3,7 @@ package com.WeatherApp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         user_field = findViewById(R.id.user_field);
         main_btn = findViewById(R.id.main_btn);
         result_info = findViewById(R.id.result_info);
